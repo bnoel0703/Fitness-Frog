@@ -7,6 +7,8 @@
 
 <h2>@ViewBag.Title</h2>
 
+@Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
+
 @using (Html.BeginForm())
 {
     <div class="row">
@@ -29,6 +31,10 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Duration, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Duration, new { @class = "form-control"})
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Intensity, new { @class = "control-label" })
                 <div>
                     <label class="radio-inline">
                         @Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.Low) @Entry.IntensityLevel.Low
@@ -39,13 +45,8 @@
                     <label class="radio-inline">
                         @Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.High) @Entry.IntensityLevel.High
                     </label>
-                    
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.Intensity, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Intensity, new { @class = "form-control" })
             </div>
 
             <div class="form-group">
